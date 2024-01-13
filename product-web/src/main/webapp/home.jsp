@@ -23,10 +23,10 @@
             <p class="mt-2 text-sm text-gray-700">Manage product</p>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <button type="button"
-                    class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <a href="<c:url value="/add-product"/>" type="button"
+               class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                 Add product
-            </button>
+            </a>
         </div>
     </div>
     <div class="mt-8 flow-root">
@@ -50,6 +50,8 @@
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
+                        <jsp:useBean id="products" scope="request"
+                                     type="java.util.List<fr.tp.producttp.entity.Product>"/>
                         <c:forEach items="${products}" var="product">
                             <tr>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${product.id}</td>
@@ -57,8 +59,13 @@
                                 </td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${product.description}</td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${product.price} €</td>
-                                <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
+                                <td class="relative flex justify-end items-center whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                    <a href="<c:url value="/edit-product?id=${product.id}"/>" class=" text-indigo-600
+                                       hover:text-indigo-900 pr-3">Edit<span class="sr-only">,${product.name}</span></a>
+                                    <form action="<c:url value="/delete-product?id=${product.id}"/>" method="post">
+                                        <input type="hidden" name="id" value="${product.id}">
+                                        <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         </c:forEach>
