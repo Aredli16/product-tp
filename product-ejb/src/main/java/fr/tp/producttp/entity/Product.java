@@ -19,4 +19,10 @@ public class Product {
 	private String name;
 	private String description;
 	private Double price;
+	@Enumerated(EnumType.STRING)
+	private Type type;
+	
+	public enum Type {
+		HIGH_TECH, FOOD, CLOTHES
+	}
 }

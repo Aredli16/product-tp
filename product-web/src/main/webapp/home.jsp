@@ -44,6 +44,7 @@
                                 Description
                             </th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Price</th>
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Type</th>
                             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                 <span class="sr-only">Edit</span>
                             </th>
@@ -59,9 +60,15 @@
                                 </td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${product.description}</td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">${product.price} €</td>
+                                <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                                    <span class="${product.type.name().equals("HIGH_TECH") ? "bg-green-50 text-green-700 ring-green-600/20" : product.type.name().equals("FOOD") ? "bg-red-50 text-red-700 ring-red-600/20" : "bg-yellow-50 text-yellow-700 ring-yellow-600/20"} inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ">
+                                            ${product.type.name().equals("HIGH_TECH") ? "High tech" : product.type.name().equals("FOOD") ? "Food" : "Clothes"}
+                                    </span>
+                                </td>
                                 <td class="relative flex justify-end items-center whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="<c:url value="/edit-product?id=${product.id}"/>" class=" text-indigo-600
-                                       hover:text-indigo-900 pr-3">Edit<span class="sr-only">,${product.name}</span></a>
+                                    <a href="<c:url value="/edit-product?id=${product.id}"/>"
+                                       class="text-indigo-600 hover:text-indigo-900 pr-3">Edit<span
+                                            class="sr-only">,${product.name}</span></a>
                                     <form action="<c:url value="/delete-product?id=${product.id}"/>" method="post">
                                         <input type="hidden" name="id" value="${product.id}">
                                         <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>

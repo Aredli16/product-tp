@@ -66,6 +66,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="sm:col-span-4">
+                    <label for="type" class="block text-sm font-medium leading-6 text-gray-900">Location</label>
+                    <select id="type" name="type"
+                            class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            required>
+                        <option value="HIGH_TECH"
+                        ${product.type.name().equals("HIGH_TECH") ? "selected": ""}>High Tech
+                        </option>
+                        <option value="FOOD" ${product.type.name().equals("FOOD") ? "selected": ""}>Food
+                        </option>
+                        <option value="CLOTHES" ${product.type.name().equals("CLOTHES") ? "selected": ""}>
+                            Clothes
+                        </option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>

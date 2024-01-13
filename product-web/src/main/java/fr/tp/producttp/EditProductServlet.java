@@ -36,6 +36,7 @@ public class EditProductServlet extends HttpServlet {
 			product.setName(req.getParameter("name"));
 			product.setDescription(req.getParameter("description"));
 			product.setPrice(Double.parseDouble(req.getParameter("price")));
+			product.setType(Product.Type.valueOf(req.getParameter("type")));
 			
 			productRepository.update(product);
 			

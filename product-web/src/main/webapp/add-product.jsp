@@ -21,8 +21,7 @@
         <p class="mt-6 text-lg leading-8 text-gray-600">This is a simple CRUD application for managing products.</p>
     </div>
 </div>
-<form action="<c:url value="/add-product"/>" method="post"
-      class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+<form action="<c:url value="/add-product"/>" method="post" class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="space-y-12">
         <div class="border-b border-gray-900/10 pb-12">
             <h2 class="text-base font-semibold leading-7 text-gray-900">Create a product</h2>
@@ -63,6 +62,17 @@
                             <span class="text-gray-500 sm:text-sm" id="price-currency">EUR</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="sm:col-span-4">
+                    <label for="type" class="block text-sm font-medium leading-6 text-gray-900">Location</label>
+                    <select id="type" name="type"
+                            class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            required>
+                        <option value="HIGH_TECH">High Tech</option>
+                        <option value="FOOD">Food</option>
+                        <option value="CLOTHES">Clothes</option>
+                    </select>
                 </div>
             </div>
         </div>
